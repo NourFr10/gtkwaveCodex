@@ -1,16 +1,14 @@
 # GTKWave C++ Clone
 
-This project is a Qt 5 based prototype of a GTKWave-like waveform viewer implemented in C++17. It focuses on the core experience of loading signal hierarchies from FST-style data, browsing signals, and visualising waveforms with basic zooming and cursor measurements.
+This project is a Qt 5 based prototype of a professional waveform viewer implemented in C++17. It focuses on the core experience of loading signal hierarchies from real FST traces (via `fst2vcd`) or raw VCD files, browsing design scopes, and visualising waveforms with rich zooming, cursor measurements, and a studio-inspired dark theme.
 
 ## Features
 
-- Load pseudo-FST files containing hierarchical scopes, signal metadata, and value changes.
-- Tree-based browser for navigating scopes and double-clicking signals to display them in the waveform panel.
-- Digital and bus waveform rendering with cursor overlays and grid lines.
-- Mouse and keyboard interactions for zooming, panning, and placing cursors.
-- Simple sample dataset (`test_data/sample.fst`) for quick experimentation.
-
-> **Note:** This prototype implements a lightweight text-based parser that mimics a subset of the FST format to keep the project self-contained. Hooking the UI up to a real FST reader is a matter of adapting `fst::SimpleFstReader` to a full parser.
+- Native loading of VCD files and binary FST traces (converted on the fly through the `fst2vcd` utility shipped with GTKWave).
+- Studio-inspired layout with a design browser, search-driven filtering, and a dark, high-contrast waveform canvas.
+- Digital and bus waveform rendering with crisp grid lines, adaptive tick marks, and colour-coded cursor overlays.
+- Mouse and keyboard interactions for zooming, panning, and placing baseline/primary cursors; toolbar shortcuts for quick resets.
+- Filterable signal tree for large designs and a bundled sample trace (`test_data/sample.fst`) for quick experimentation.
 
 ## Building
 
@@ -24,6 +22,8 @@ cmake --build .
 ```
 
 The resulting executable `gtkwave_cpp_clone` will be placed in the build directory.
+
+> **Dependency note:** FST support uses the external `fst2vcd` helper (part of the GTKWave tool suite). Ensure it is installed and available on your `PATH`. If the converter is missing, the viewer will still open VCD files but will report a descriptive error when attempting to open an FST trace.
 
 ### Running
 

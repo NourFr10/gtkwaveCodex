@@ -8,8 +8,11 @@
 #include "simple_fst_reader.h"
 
 class QAction;
+class QActionGroup;
 class QSplitter;
 class QLabel;
+class QLineEdit;
+class QWidget;
 
 class MainWindow : public QMainWindow
 {
@@ -27,11 +30,16 @@ private slots:
     void openFstFileDialog();
     void addSignalToWaveform(const fst::Signal &signal);
     void updateStatusBar(qint64 primary, qint64 delta);
+    void filterSignals(const QString &text);
+    void clearFilter();
 
 private:
     void createActions();
     void createMenus();
+    void createToolBars();
     void createStatusBar();
+    QWidget *createLeftPane();
+    void applyDarkPalette();
     void loadFstFile(const QString &filePath);
 
     SignalTree *m_signalTree = nullptr;
@@ -40,7 +48,14 @@ private:
 
     QAction *m_openAction = nullptr;
     QAction *m_exitAction = nullptr;
+    QAction *m_zoomInAction = nullptr;
+    QAction *m_zoomOutAction = nullptr;
+    QAction *m_resetViewAction = nullptr;
     QLabel *m_primaryCursorLabel = nullptr;
     QLabel *m_deltaLabel = nullptr;
+    QLabel *m_referenceCursorLabel = nullptr;
+    QLineEdit *m_filterEdit = nullptr;
+    qint64 m_lastReferenceTime = -1;
+    qint64 m_lastPrimaryTime = -1;
 };
 

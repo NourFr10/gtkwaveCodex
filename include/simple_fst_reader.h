@@ -6,6 +6,8 @@
 #include <QVector>
 #include <memory>
 
+class QIODevice;
+
 namespace fst
 {
 struct SignalValue
@@ -51,6 +53,11 @@ public:
 
 private:
     void clear();
+    bool loadFromPseudoText(QIODevice &device);
+    bool loadFromVcd(QIODevice &device);
+    bool loadFromFstBinary(const QString &filePath);
+    bool finalizeHierarchy(QVector<Scope> &scopeStack);
+    void appendSignalValue(int handle, qint64 time, const QString &value);
 
     Scope m_rootScope;
     QMap<int, Signal> m_signals;

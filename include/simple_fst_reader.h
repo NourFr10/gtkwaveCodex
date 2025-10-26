@@ -44,7 +44,7 @@ public:
     bool load(const QString &filePath);
 
     const Scope &rootScope() const;
-    const QMap<int, Signal> &signals() const;
+    const QMap<int, Signal> &signalMap() const;
 
     QString lastError() const;
     qint64 maxTime() const;

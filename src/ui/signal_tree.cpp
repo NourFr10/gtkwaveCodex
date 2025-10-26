@@ -30,10 +30,10 @@ SignalTree::SignalTree(QWidget *parent)
     });
 }
 
-void SignalTree::populate(const fst::Scope &rootScope, const QMap<int, fst::Signal> &signals)
+void SignalTree::populate(const fst::Scope &rootScope, const QMap<int, fst::Signal> &signalMap)
 {
     clear();
-    m_signals = &signals;
+    m_signals = &signalMap;
     if (rootScope.path.isEmpty() && rootScope.type == QLatin1String("root"))
     {
         for (const fst::Scope &child : rootScope.children)

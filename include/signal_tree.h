@@ -10,7 +10,7 @@ class SignalTree : public QTreeWidget
 public:
     explicit SignalTree(QWidget *parent = nullptr);
 
-    void populate(const fst::Scope &rootScope, const QMap<int, fst::Signal> &signals);
+    void populate(const fst::Scope &rootScope, const QMap<int, fst::Signal> &signalMap);
 
 signals:
     void signalActivated(const fst::Signal &signal);

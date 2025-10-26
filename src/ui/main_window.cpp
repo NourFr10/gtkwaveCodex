@@ -98,7 +98,7 @@ void MainWindow::loadFstFile(const QString &filePath)
 
     m_signalTree->clear();
     m_waveformView->clearSignals();
-    m_signalTree->populate(m_reader.rootScope(), m_reader.signals());
+    m_signalTree->populate(m_reader.rootScope(), m_reader.signalMap());
     const qint64 maxTime = qMax<qint64>(100, m_reader.maxTime());
     m_waveformView->setTimeRange(0, maxTime == 0 ? 100 : maxTime);
     statusBar()->showMessage(tr("Loaded %1").arg(filePath), 3000);

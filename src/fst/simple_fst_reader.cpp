@@ -187,7 +187,7 @@ const Scope &SimpleFstReader::rootScope() const
     return m_rootScope;
 }
 
-const QMap<int, Signal> &SimpleFstReader::signals() const
+const QMap<int, Signal> &SimpleFstReader::signalMap() const
 {
     return m_signals;
 }
